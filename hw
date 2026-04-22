@@ -1,0 +1,52 @@
+    9  sudo apt update
+   10  sudo apt install git
+   11  git --version 
+   12  git config --global user.name 'vkaurd'
+   13  git config --global user.email 'vkaurd16@gmail.com'
+   14  mkdir ~/repo
+   15  cd ~/repo
+   16  git init
+   17  cd ~
+   18  git clone https://github.com/vkaurd/vk.git
+   19  ls
+   20  cd ~/repo
+   21  git remote add origin https://github.com/vkaurd/vk.git
+   22  git branch -M main
+   23  git remote -v
+   24  git remote add origin https://github.com/vkaurd/vk.git
+   25  git remote -v
+   26  git branch -M main
+   27  echo "Hello from repo" > file.txt
+   28  ls
+   29  git add file.txt
+   30  git commit -m 'commit1'
+   31  git push -u origin main
+   32  git status
+   33  git checkout -b feature-branch
+   34  echo "work" >> file.txt
+   35  git add file.txt
+   36  git commit -m 'line'
+   37  git checkout main
+   38  echo 'main work' >> file.txt
+   39  git add file.txt
+   40  git commit -m 'main line'
+   41  git checkout feature-branch
+   42  git merge main
+   43  cat file.txt 
+   44  nano file.txt 
+   45  cat file.txt 
+   46  git add file.txt
+   47  git commit -m 'conf'
+   48  git checkout main
+   49  echo 'test1' > test.txt
+   50  git add test.txt
+   51  git commit -m 'test1'
+   52  git log
+   53  git log --oneline
+   54  git reset --hard HEAD~1
+   55  ls -la
+   56  git log --oneline
+   57  git push origin main --force
+   58  git push origin feature-branch
+   59  git pull origin main
+   60  git log --graph --oneline --all --decorate
