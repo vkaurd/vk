@@ -73,20 +73,25 @@ for cat, age, name, surname in data:
     fio=name+' '+surname
     info=cat+', '+str(age)
     if fio not in res:
-        res[fio] = info
+        res[fio] = info  #just name and cat
     else:
-        res[fio] = res[fio]+', '+info #показываем куда вписать кота
+        res[fio] = res[fio]+', '+info #показываем куда вписать another one кота
 print(res)
 
 #3
 import random
-nums=[random.randint(1,100) for i in range(10)]
-for i in range(len(nums)):
-    for j in range(len(nums)-1): #9 пар, 10 чисел
-        if nums[j]>nums[j+1]:
-            nums[j], nums[j+1] = nums[j+1], nums[j]
-for n in nums:
-    print(n)
+import time 
+size=[10,100,1000,10000]
+for s in size:
+    nums=[random.randint(1,100) for i in range(s)]
+    start = time.time()
+    for i in range(len(nums)):  #again
+        for j in range(len(nums)-1): #9 пар, 10 чисел, left to right
+            if nums[j]>nums[j+1]:
+                nums[j], nums[j+1] = nums[j+1], nums[j]
+    end = time.time()
+    res=end-start
+    print(s, res)
 '''
 #4
 import random
@@ -95,15 +100,16 @@ rings=[]
 temp=[7,6,5,4,3,2,1]
 while len(temp)>0:
     ind = random.randint(0, len(temp)-1)
-    v=temp.pop(ind)
+    v=temp.pop(ind)  #ind in v
     rings.append(v)
 tower = [rings, [], []]
 while True:
     print('colishki:', tower)
-    s=int(input())
+    s=int(input()) #colisko
     e=int(input())
-    ring = tower[s].pop()
+    ring = tower[s].pop() # minus last one ring
     tower[e].append(ring)
     if tower[0]==win or tower[1]==win or tower[2]==win:
         print('oh my god, u did it')
         break
+
