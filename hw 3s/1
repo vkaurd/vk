@@ -1,0 +1,75 @@
+'''
+#1
+def find_min(l):   #ищем минимум
+    nul=l[0]   #пусть минимум это 1 число в списке, с ним будем сравнивать
+    for i in l:  #пробегаемся по списку
+        if i < nul:  #сравним с 1 числом
+            nul = i    #когда нашли, запоминаем его
+    ind=[]       #здесь будут индексы
+    for i in range(len(l)):  #тут пробегаемся не по списку, а по индексам
+        if l[i] == nul:   #сравним с мин
+            ind.append(i+1)   #если элемент равен минимальному, добавлем его индекс в список и прибавляем 1, тк в питоне индексация с 0
+    return ind #возвращаем список найденных позиций
+
+ourlist = []
+print('Введите числа по очереди. Чтобы закончить, напишите stop')
+a = input()
+while a != "stop":
+    ourlist.append(int(a))
+    a = input()
+
+answer = find_min(ourlist)
+print("индекс минимального:", answer)
+
+#2
+def bubble_sort(l):
+    n = len(l)
+    for i in range(n):   # цикл отвечает за количество полных проходов
+        for j in range(0, n - 1):   # а этот идет по элементам и сравнивает соседей. n-1 потому что пар соседей на 1 меньше
+            if l[j] > l[j + 1]:   # если левый элемент больше правого
+                l[j], l[j + 1] = l[j + 1], l[j]   # меняем их местами
+                print(l)   # выводим список после перестановки
+    return l   # возвращаем список
+
+ourlist = []
+print('Введите числа по очереди. Чтобы закончить, напишите stop')
+a = input()
+while a != "stop":
+    ourlist.append(int(a))
+    a = input()
+
+print("Исходный список:", ourlist)
+sorted_list = bubble_sort(ourlist)
+print("Итоговый список:", sorted_list)
+
+#3
+import random  # подключаем модуль для случайных чисел
+def nucl(length): # Список нуклеотидов
+    letters = ['A', 'C', 'G', 'T'] 
+    for i in range(length): # Запускаем цикл столько раз, какую длину надо
+        random_index = random.randint(0, 3) # Выбираем случайную букву
+        yield letters[random_index] # Выдаем одну случайную букву наружу и ставим функцию на паузу
+
+size = int(input())
+st = "" # пустая строка, сюда складываем буквы
+for letter in nucl(size):
+    st += letter  # добавляем букву к строке
+print(st)
+'''
+#4
+import random
+def game():
+    secret = random.randint(1, 100) # загадали число
+    tr = 1 # счетчик попыток
+    while tr <= 10:
+        guess = int(input())
+        if guess == secret:
+            print('WIN')
+            return # выходим из функции, конец игры
+        elif guess < secret:
+            print('Загаданное число больше.')
+        else:
+            print('Загаданное число меньше.')    
+        tr = tr + 1 # переходим к следующей попытке
+    print('Попытки кончились! Загаданное число было:', secret)
+game()
